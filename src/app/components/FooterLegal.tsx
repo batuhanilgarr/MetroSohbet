@@ -303,7 +303,7 @@ export default function FooterLegal() {
           <h4 className="font-semibold text-gray-900 mb-2">Hizmet Garantileri</h4>
           <div className="space-y-2">
             <div className="p-2 bg-gray-50 rounded border">
-              <p className="text-xs"><strong>Hizmet "Olduğu Gibi" Sunulur:</strong></p>
+              <p className="text-xs"><strong>Hizmet &quot;Olduğu Gibi&quot; Sunulur:</strong></p>
               <ul className="list-disc list-inside mt-1 text-xs">
                 <li>Kesintisiz çalışma garanti edilmez</li>
                 <li>Hata ve eksiklikler olabilir</li>
@@ -396,7 +396,7 @@ export default function FooterLegal() {
                 </tr>
                 <tr>
                   <td className="px-3 py-2 text-xs text-gray-900">csrf_token</td>
-                  <td className="px-3 py-2 text-xs text-gray-700">Güvenlik token'ı, CSRF koruması</td>
+                  <td className="px-3 py-2 text-xs text-gray-700">Güvenlik token&apos;ı, CSRF koruması</td>
                   <td className="px-3 py-2 text-xs text-gray-700">Tarayıcı kapanana kadar</td>
                   <td className="px-3 py-2 text-xs text-gray-700">Evet</td>
                   <td className="px-3 py-2 text-xs text-gray-700">Güvenlik</td>

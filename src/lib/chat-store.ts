@@ -316,7 +316,7 @@ export function getRoomIdForLineAndStation(lineName: string, stationName: string
 }
 
 // Room ID'den hat ve istasyon bilgisini çıkarma
-export function getLineAndStationFromRoomId(roomId: string): { lineName: string; stationName: string | null } {
+export async function getLineAndStationFromRoomId(roomId: string): Promise<{ lineName: string; stationName: string | null }> {
   // Önce sadece hat için kontrol et
   const lineMapping: { [key: string]: string } = {
     '550e8400-e29b-41d4-a716-446655440001': 'M1',
@@ -338,17 +338,21 @@ export function getLineAndStationFromRoomId(roomId: string): { lineName: string;
     const [baseId, stationHash] = roomId.split('-')
     const lineName = lineMapping[baseId]
     if (lineName) {
-      // Station hash'ten istasyon adını bulmak için metro-data'dan istasyonları kontrol et
-      const { metroLines } = require('./metro-data')
-      const line = metroLines.find((l: any) => l.name === lineName)
-      if (line) {
-        // Hash'i hesaplayarak istasyonu bul
-        for (const station of line.stations) {
-          const hash = station.split('').reduce((acc: number, char: string) => acc + char.charCodeAt(0), 0)
-          if (hash.toString(16).padStart(8, '0') === stationHash) {
-            return { lineName, stationName: station }
+      try {
+        // Station hash'ten istasyon adını bulmak için metro-data'dan istasyonları kontrol et
+        const { metroLines } = await import('./metro-data')
+        const line = metroLines.find((l: any) => l.name === lineName)
+        if (line) {
+          // Hash'i hesaplayarak istasyonu bul
+          for (const station of line.stations) {
+            const hash = station.split('').reduce((acc: number, char: string) => acc + char.charCodeAt(0), 0)
+            if (hash.toString(16).padStart(8, '0') === stationHash) {
+              return { lineName, stationName: station }
+            }
           }
         }
+      } catch (error) {
+        console.error('Error loading metro data:', error)
       }
     }
   }

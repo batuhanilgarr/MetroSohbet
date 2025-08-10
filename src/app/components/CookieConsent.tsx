@@ -141,7 +141,7 @@ export default function CookieConsent() {
               
               <div className="pt-4 border-t">
                 <p className="text-xs text-gray-500 leading-relaxed">
-                  Çerez ayarlarınızı daha sonra footer'daki "🍪 Çerez Politikası" linkinden değiştirebilirsiniz.
+                  Çerez ayarlarınızı daha sonra footer&apos;daki &quot;🍪 Çerez Politikası&quot; linkinden değiştirebilirsiniz.
                 </p>
               </div>
             </div>

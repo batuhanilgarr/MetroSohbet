@@ -15,6 +15,7 @@ interface AdminState {
   banUser: (nickname: string) => Promise<void>
   clearAllMessages: (roomId?: string) => Promise<void>
   checkAdminStatus: () => void
+  getAuthHeaders: () => { 'Content-Type': string; 'Authorization': string } | null
 }
 
 export const useAdminStore = create<AdminState>((set, get) => ({

@@ -341,7 +341,7 @@ export async function getLineAndStationFromRoomId(roomId: string): Promise<{ lin
       try {
         // Station hash'ten istasyon adını bulmak için metro-data'dan istasyonları kontrol et
         const { metroLines } = await import('./metro-data')
-        const line = metroLines.find((l: any) => l.name === lineName)
+        const line = metroLines.find((l: { name: string; stations: string[] }) => l.name === lineName)
         if (line) {
           // Hash'i hesaplayarak istasyonu bul
           for (const station of line.stations) {
